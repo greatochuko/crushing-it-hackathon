@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+header {
+  width: 1440px;
+  background-color: #1a1a1a;
+  padding: 12px 16px;
+}
+
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header nav .logo {
+  height: 30px;
+}
+
+.search-form {
+  height: 32px;
+  flex: 0 1 480px;
+  display: flex;
+  position: relative;
+}
+
+.search-form input {
+  flex: 1;
+  border-radius: 8px;
+  border: 1px solid #616161;
+  background-color: #303030;
+  padding: 8px;
+  font-size: 13px;
+  padding-left: 34px;
+  outline: none;
+  color: white;
+}
+
+.search-form input::placeholder {
+  color: #b5b5b5;
+}
+
+.search-form .search-icon {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 8px;
+}
+
+.nav-right {
+  display: flex;
+  /* align-items: center; */
+  gap: 8px;
+}
+
+.nav-right button.notifications {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: none;
+  background-color: #303030;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-right button.user {
+  border: none;
+  padding: 2px 2px 2px 8px;
+  background-color: #303030;
+  border-radius: 8px;
+  color: #e3e3e3;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-right button.user span {
+  display: block;
+  background-color: #36fba1;
+  color: rgba(0, 0, 0, 40);
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
