@@ -8,10 +8,19 @@
   outline: none;
 }
 
+body {
+  background-color: #f1f1f1;
+}
+
+button {
+  cursor: pointer;
+}
+
 header {
   width: 1440px;
   background-color: #1a1a1a;
   padding: 12px 16px;
+  position: relative;
 }
 
 header nav {
@@ -117,12 +126,13 @@ button.notifications {
   display: flex;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
 }
 
 .user-image {
   display: block;
   background-color: #36fba1;
-  color: rgba(0, 0, 0, 40);
+  color: rgba(0, 0, 0, 0.4);
   width: 28px;
   height: 28px;
   border-radius: 6px;
@@ -130,6 +140,71 @@ button.notifications {
   align-items: center;
   justify-content: center;
   border: none;
+}
+
+/* NOTIFICATIONS DROPDOWN */
+.notifications-dropdown {
+  display: none;
+  position: absolute;
+  right: 16px;
+  top: 64px;
+  background-color: white;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid #dbdbdb;
+  border-radius: 14px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+  width: fit-content;
+}
+
+.notifications-dropdown.open {
+  display: flex;
+}
+
+.notifications-dropdown .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notifications-dropdown .header .buttons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.notifications-dropdown .header .buttons button {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  border-radius: 4px;
+}
+
+.notifications-dropdown .header .buttons button:focus {
+  border: solid 1px #005bd3;
+}
+
+.notifications-dropdown .header h2 {
+  font-weight: 600;
+  color: #303030;
+  font-size: 14px;
+}
+
+.notifications-dropdown .content {
+  padding: 16px;
+  color: #616161;
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+.notifications-dropdown .content p {
+  font-size: 13px;
+  font-weight: 600;
 }
 
 /* MOBILE STYLES */
@@ -169,5 +244,11 @@ button.notifications {
 
   button.notifications {
     background-color: transparent;
+  }
+
+  .notifications-dropdown {
+    width: 358px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
