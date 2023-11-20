@@ -5,6 +5,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
+  outline: none;
 }
 
 header {
@@ -17,6 +18,15 @@ header nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 8px;
+}
+
+header nav a {
+  display: flex;
+}
+
+header nav .mobile-logo {
+  display: none;
 }
 
 header nav .logo {
@@ -32,6 +42,8 @@ header nav .logo {
 
 .search-form input {
   flex: 1;
+  width: 100%;
+
   border-radius: 8px;
   border: 1px solid #616161;
   background-color: #303030;
@@ -40,6 +52,18 @@ header nav .logo {
   padding-left: 34px;
   outline: none;
   color: white;
+}
+
+.search-form input:hover {
+  border-color: #e1e1e1;
+}
+
+.search-form input:active {
+  border-color: #fff;
+}
+
+.search-form input:focus {
+  border-color: #fff;
 }
 
 .search-form input::placeholder {
@@ -56,11 +80,10 @@ header nav .logo {
 
 .nav-right {
   display: flex;
-  /* align-items: center; */
   gap: 8px;
 }
 
-.nav-right button.notifications {
+button.notifications {
   width: 32px;
   height: 32px;
   border-radius: 8px;
@@ -71,7 +94,20 @@ header nav .logo {
   justify-content: center;
 }
 
-.nav-right button.user {
+:is(button.notifications, .user):hover {
+  background-color: #616161;
+}
+
+:is(button.notifications, .user):active {
+  background-color: #656266;
+}
+
+:is(button.notifications, .user):focus {
+  background-color: #616161;
+  box-shadow: 0 0 3px #005bd3;
+}
+
+.user {
   border: none;
   padding: 2px 2px 2px 8px;
   background-color: #303030;
@@ -83,7 +119,7 @@ header nav .logo {
   gap: 8px;
 }
 
-.nav-right button.user span {
+.user-image {
   display: block;
   background-color: #36fba1;
   color: rgba(0, 0, 0, 40);
@@ -93,4 +129,45 @@ header nav .logo {
   display: flex;
   align-items: center;
   justify-content: center;
+  border: none;
+}
+
+/* MOBILE STYLES */
+
+.mobile-nav-right {
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+
+@media screen and (max-width: 600px) {
+  header {
+    width: 100vw;
+  }
+
+  header nav .logo {
+    display: none;
+    background-color: red;
+  }
+
+  header nav .mobile-logo {
+    display: block;
+  }
+
+  .nav-right {
+    display: none;
+  }
+
+  .mobile-nav-right {
+    display: flex;
+  }
+
+  .search-form {
+    flex: 1;
+    min-width: 0;
+  }
+
+  button.notifications {
+    background-color: transparent;
+  }
 }
