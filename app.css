@@ -359,10 +359,6 @@ button.notifications {
   border: solid 2px transparent;
 }
 
-.settings-dropdown .header > a:focus {
-  border-color: #005bd3;
-}
-
 .settings-dropdown ul {
   display: flex;
   flex-direction: column;
@@ -380,15 +376,15 @@ button.notifications {
   flex-direction: column;
 }
 
-.settings-dropdown ul li a:hover {
+.settings-dropdown a:hover {
   background-color: #f1f1f1;
 }
 
-.settings-dropdown ul li a:active {
+.settings-dropdown a:active {
   background-color: #f0f0f0;
 }
 
-.settings-dropdown ul li a:focus {
+.settings-dropdown a:focus {
   border-color: #005bd3;
   background-color: transparent;
 }
@@ -772,5 +768,9 @@ main {
   .setup-guide {
     width: 100%;
     border-radius: 0;
+  }
+
+  .setup-guide ul li img {
+    display: none;
   }
 }
