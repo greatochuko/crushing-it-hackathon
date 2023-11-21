@@ -26,13 +26,12 @@ function removeMobileTrialCallout() {
   mobileTrialCallout.classList.remove("show");
 }
 
-function toggleShowSetupGuideList(e) {
+function toggleShowSetupGuideList() {
   toggleSetupGuideBtn.classList.toggle("show");
   setupGuideList.classList.toggle("show");
 }
 
-function toggleCheck(e) {
-  const checkBtn = e;
+function toggleCheck(checkBtn) {
   const circleLoadedGray = checkBtn.querySelector(".circle-loaded-gray");
   const circleLoaded = checkBtn.querySelector(".circle-loaded");
   if (checkBtn.classList.contains("checked")) {
@@ -62,16 +61,17 @@ function toggleCheck(e) {
   }, 500);
 }
 
-function openSetupGuideListItems(e) {
-  if (!e || e.classList.contains("open")) return;
-  if (e.previousElementSibling) {
-    const prevCheckBtn = e.previousElementSibling.querySelector(".check-btn");
+function openSetupGuideListItem(listItem) {
+  if (!listItem || listItem.classList.contains("open")) return;
+  if (listItem.previousElementSibling) {
+    const prevCheckBtn =
+      listItem.previousElementSibling.querySelector(".check-btn");
     prevCheckBtn.title =
       "Uncheck " + prevCheckBtn.title.split(" ").slice(1).join(" ");
   }
-  const listCheckBtn = e.querySelector(".check-btn");
+  const listCheckBtn = listItem.querySelector(".check-btn");
   listCheckBtn.focus();
-  setupGuideListItems.forEach((listItem) => listItem.classList.remove("open"));
+  setupGuideListItems.forEach((item) => item.classList.remove("open"));
   e.classList.add("open");
 }
 
