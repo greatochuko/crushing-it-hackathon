@@ -36,6 +36,7 @@ function toggleCheck(e) {
   const circleLoadedGray = checkBtn.querySelector(".circle-loaded-gray");
   const circleLoaded = checkBtn.querySelector(".circle-loaded");
   if (checkBtn.classList.contains("checked")) {
+    checkBtn.title = "Check " + checkBtn.title.split(" ").slice(1).join(" ");
     checkBtn.classList.remove("checked");
     circleLoaded.style.display = "none";
     checkedItems = checkedItems.filter(
@@ -62,6 +63,11 @@ function toggleCheck(e) {
 }
 
 function openSetupGuideListItems(e) {
+  if (e.previousElementSibling) {
+    const prevCheckBtn = e.previousElementSibling.querySelector(".check-btn");
+    prevCheckBtn.title =
+      "Uncheck " + prevCheckBtn.title.split(" ").slice(1).join(" ");
+  }
   if (!e || e.classList.contains("open")) return;
   const listCheckBtn = e.querySelector(".check-btn");
   listCheckBtn.focus();
