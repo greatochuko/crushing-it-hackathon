@@ -63,12 +63,12 @@ function toggleCheck(e) {
 }
 
 function openSetupGuideListItems(e) {
+  if (!e || e.classList.contains("open")) return;
   if (e.previousElementSibling) {
     const prevCheckBtn = e.previousElementSibling.querySelector(".check-btn");
     prevCheckBtn.title =
       "Uncheck " + prevCheckBtn.title.split(" ").slice(1).join(" ");
   }
-  if (!e || e.classList.contains("open")) return;
   const listCheckBtn = e.querySelector(".check-btn");
   listCheckBtn.focus();
   setupGuideListItems.forEach((listItem) => listItem.classList.remove("open"));
