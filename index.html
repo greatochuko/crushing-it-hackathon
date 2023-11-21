@@ -228,9 +228,7 @@
       <section class="trial-callout show" id="trial-callout">
         <p>Extend your trial for $1/month for 3 months on select plans.</p>
         <div class="buttons">
-          <button>
-            <a href="https://shopify.com/pricing">Select a plan</a>
-          </button>
+          <a class="btn-2" href="https://shopify.com/pricing">Select a plan</a>
           <button onclick="removeTrialCallout()">
             <svg
               width="20"
@@ -266,10 +264,41 @@
             </svg>
           </button>
         </p>
-        <button>
-          <a href="https://shopify.com/pricing">Select a plan</a>
-        </button>
+
+        <a class="btn-2" href="https://shopify.com/pricing">Select a plan</a>
       </section>
+      <div class="setup-guide" id="setup-guide">
+        <div class="header">
+          <div class="text">
+            <div class="header-text">
+              <h3>Setup Guide</h3>
+              <p>
+                Use this personalized guide to get your store up and running.
+              </p>
+            </div>
+            <div class="progress">
+              <p>1/5 completed</p>
+              <div class="progress-bar"><span></span></div>
+            </div>
+          </div>
+          <button class="btn-3">
+            <svg
+              width="10"
+              height="6"
+              viewBox="0 0 10 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M9.53033 5.28033C9.23744 5.57322 8.76256 5.57322 8.46967 5.28033L5 1.81066L1.53033 5.28033C1.23744 5.57322 0.762563 5.57322 0.46967 5.28033C0.176777 4.98744 0.176777 4.51256 0.46967 4.21967L4.46967 0.219669C4.76256 -0.0732237 5.23744 -0.0732237 5.53033 0.219669L9.53033 4.21967C9.82322 4.51256 9.82322 4.98744 9.53033 5.28033Z"
+                fill="#4A4A4A"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
     </main>
 
     <script src="/app.js"></script>
