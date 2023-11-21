@@ -27,9 +27,9 @@ button {
 
 /* UTILITY CLASSES */
 .btn-3 {
-  background-color: #fff;
+  background-color: transparent;
   border-radius: 6px;
-  border: none;
+  border: solid 2px transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,7 +46,7 @@ button {
 .btn-3:focus {
   background-color: #e0e0e0;
   border: solid 2px #005bd3;
-  background-color: #fff;
+  background-color: transparent;
 }
 
 .btn-2 {
@@ -67,11 +67,12 @@ button {
 }
 
 .btn-2:active {
-  box-shadow: 0 2px 1.5px #e2e2e2 inset;
+  box-shadow: 0px 2px 1.5px 0px #e2e2e2 inset;
 }
 
 .btn-2:focus {
-  box-shadow: 0px 0px 0px 3px #005bd3;
+  box-shadow: 0px 0px 0px 3px #005bd3, 0px 0px 0px 1px #ffffff,
+    0px -1px 0px 0px #b5b5b5 inset;
 }
 
 .btn-1 {
@@ -82,18 +83,17 @@ button {
   border-radius: 6px;
   width: fit-content;
   color: #f6f6f6;
-  box-shadow: 0px 2px 0px 0px #000000;
-
   font-size: 12px;
+  box-shadow: 0px 0px 0px 1.5px #333333, 0px 1px 0px 1.5px #333333,
+    0px 2px 0px 0px #000000;
 }
 
 .btn-1:hover {
-  box-shadow: 0px 2px 0px 0px #000000;
   background-color: #2a2a2a;
 }
 
 .btn-1:active {
-  box-shadow: 0px 3px 0px 0px #000000 inset;
+  box-shadow: 0px 0px 0px 1.5px #333333, 0px 3px 0px 0px #000000 inset;
 }
 
 .btn-1:focus {
@@ -340,7 +340,7 @@ button.notifications {
   background-color: #f1f1f1;
 }
 
-.settings-dropdown .header > div h3 {
+.settings-dropdown .header > div h2 {
   font-size: 13px;
   align-items: center;
   display: flex;
@@ -496,7 +496,7 @@ main {
   justify-content: space-between;
 }
 
-.setup-guide .header h3 {
+.setup-guide .header h2 {
   font-size: 14px;
   font-weight: 600;
 }
@@ -539,14 +539,16 @@ main {
 
 .progress-bar span {
   display: block;
-  width: 25%;
+  width: 0%;
   background-color: #1a1a1a;
   height: 100%;
+  transition: 0.3s;
 }
 
 .setup-guide .header button {
   width: 28px;
   height: 28px;
+  transition: 0.3s;
   transform: rotate(180deg);
 }
 
@@ -565,7 +567,15 @@ main {
   display: flex;
 }
 
+.setup-guide-list li {
+  background-color: #fff;
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
 .setup-guide-list li.open {
+  cursor: auto;
   padding: 8px 8px 12px 8px;
   border-radius: 10px;
   display: flex;
@@ -573,14 +583,28 @@ main {
   background-color: #f3f3f3;
 }
 
-.setup-guide-list li.open .content {
+.setup-guide-list li .content {
   display: flex;
+  align-items: center;
   gap: 8px;
-  align-items: start;
+}
+
+.setup-guide-list li.open .content {
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.setup-guide-list li:not(.open) .text :not(h3) {
+  display: none;
+}
+
+.setup-guide-list li:not(.open) img {
+  display: none;
 }
 
 .check-btn {
   width: 24px;
+  min-width: 24px;
   height: 24px;
   display: flex;
   align-items: center;
@@ -637,20 +661,21 @@ main {
 
 @keyframes grow-2 {
   100% {
-    scale: 1.1;
+    scale: 1.2;
+    transform: rotate(90deg);
   }
 }
 
 .check-btn .circle-loaded-gray {
   display: none;
-  animation: grow-2 0.3s forwards;
+  animation: grow-2 0.6s forwards;
 }
 
-.check-btn:not(.checked, .checking):hover .circle {
+.check-btn:not(.checked, .checking):is(:hover, :focus) .circle {
   display: block;
 }
 
-.check-btn:not(.checked, .checking):hover .dotted-circle {
+.check-btn:not(.checked, .checking):is(:hover, :focus) .dotted-circle {
   display: none;
 }
 
@@ -673,7 +698,7 @@ main {
   padding: 2px 0;
 }
 
-.setup-guide-list li.open .text h4 {
+.setup-guide-list li .text h3 {
   font-size: 13px;
   font-weight: 600;
   color: #303030;
@@ -687,7 +712,20 @@ main {
 .setup-guide-list li.open .text p a {
   font-size: 14px;
   color: #005bd3;
+  display: inline;
 }
+
+.setup-guide-list li.open .text .buttons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.setup-guide-list li.open .text .buttons button.btn-3 {
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
 /* MOBILE STYLES */
 
 @media screen and (max-width: 600px) {

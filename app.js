@@ -2,11 +2,13 @@ const notificationsDropdown = document.getElementById("notifications-dropdown");
 const settingsDropdown = document.getElementById("settings-dropdown");
 const trialCallout = document.getElementById("trial-callout");
 const mobileTrialCallout = document.getElementById("mobile-trial-callout");
-const checkBtn = document.getElementById("check-btn");
-const circleLoadedGray = document.querySelector(".circle-loaded-gray");
-const circleLoaded = document.querySelector(".circle-loaded");
 const setupGuideList = document.getElementById("setup-guide-list");
+const progressBar = document.getElementById("progress-bar");
+const progressText = document.getElementById("progress-text");
+const setupGuideListItems = document.querySelectorAll(".setup-guide-list li");
 const toggleSetupGuideBtn = document.getElementById("toggle-setup-guide-btn");
+
+let checkedItems = [];
 
 function toggleNotificationsDropdown() {
   notificationsDropdown.classList.toggle("open");
@@ -30,9 +32,16 @@ function toggleShowSetupGuideList(e) {
 }
 
 function toggleCheck(e) {
+  const checkBtn = e;
+  const circleLoadedGray = checkBtn.querySelector(".circle-loaded-gray");
+  const circleLoaded = checkBtn.querySelector(".circle-loaded");
   if (checkBtn.classList.contains("checked")) {
     checkBtn.classList.remove("checked");
     circleLoaded.style.display = "none";
+    checkedItems = checkedItems.filter(
+      (item) => item !== checkBtn.parentElement.parentElement
+    );
+    updateProgressBar();
     return;
   }
   checkBtn.classList.add("checking");
@@ -43,6 +52,24 @@ function toggleCheck(e) {
     setTimeout(() => {
       circleLoadedGray.style.display = "none";
       circleLoaded.style.display = "block";
+      checkedItems.push(checkBtn.parentElement.parentElement);
+      updateProgressBar();
+      openSetupGuideListItems(
+        checkBtn.parentElement.parentElement.nextElementSibling
+      );
     }, 300);
   }, 500);
+}
+
+function openSetupGuideListItems(e) {
+  if (!e || e.classList.contains("open")) return;
+  const listCheckBtn = e.querySelector(".check-btn");
+  listCheckBtn.focus();
+  setupGuideListItems.forEach((listItem) => listItem.classList.remove("open"));
+  e.classList.add("open");
+}
+
+function updateProgressBar() {
+  progressText.innerText = `${checkedItems.length}/5 completed`;
+  progressBar.style.width = `${(checkedItems.length / 5) * 100}%`;
 }
